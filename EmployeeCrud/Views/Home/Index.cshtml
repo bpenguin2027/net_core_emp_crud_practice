@@ -1,0 +1,64 @@
+﻿@model IEnumerable<EmployeeCrud.Models.TEmployee>
+
+@{
+    ViewData["Title"] = "員工列表";
+}
+
+<h2>員工列表</h2>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FEmpId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FSalary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FEmploymentDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FEmpId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FMail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FSalary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FEmploymentDate)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FEmpId" class="btn btn-warning">修改</a>
+                    <a asp-action="Delete" asp-route-id="@item.FEmpId"
+                       class="btn btn-danger"
+                       onclick="return confirm('確定要刪除 @item.FEmpId 員工嗎？');">刪除</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

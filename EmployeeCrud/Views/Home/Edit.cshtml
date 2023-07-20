@@ -1,0 +1,61 @@
+﻿@model EmployeeCrud.Models.TEmployee
+
+@{
+    ViewData["Title"] = "員工編輯";
+}
+
+<h2>員工編輯</h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="FEmpId" />
+            <div class="form-group">
+                <label asp-for="FName" class="control-label"></label>
+                <input asp-for="FName" class="form-control" />
+                <span asp-validation-for="FName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FGender" class="control-label"></label>
+
+                <br />
+                <span style="font-size:12pt">男</span>
+                <input asp-for="FGender" type="radio" value="男" checked />
+                <span style="font-size:12pt">女</span>
+                <input asp-for="FGender" type="radio" value="女" />
+
+                @*<input asp-for="FGender" class="form-control" />
+                    <span asp-validation-for="FGender" class="text-danger"></span>*@
+
+            </div>
+            <div class="form-group">
+                <label asp-for="FMail" class="control-label"></label>
+                <input asp-for="FMail" class="form-control" />
+                <span asp-validation-for="FMail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FSalary" class="control-label"></label>
+                <input asp-for="FSalary" class="form-control" />
+                <span asp-validation-for="FSalary" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FEmploymentDate" class="control-label"></label>
+                <input asp-for="FEmploymentDate" class="form-control" />
+                <span asp-validation-for="FEmploymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="儲存" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<span class="text-danger">
+    @ViewData["Err"]
+</span>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
